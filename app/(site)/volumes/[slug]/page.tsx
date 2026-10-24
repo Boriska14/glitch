@@ -5,6 +5,7 @@ import VolumeCover from "@/components/VolumeCover";
 import SpotifyEmbed from "@/components/SpotifyEmbed";
 import PinterestBoard from "@/components/PinterestBoard";
 import Comments from "@/components/Comments";
+import MagazineReader, { PageLink } from "@/components/MagazineReader";
 import { getVolume, pad, formatDate, getSite, isPlaceholder } from "@/lib/volumes";
 
 export const revalidate = 300;
@@ -29,12 +30,21 @@ export default async function VolumePage({ params }: { params: Promise<{ slug: s
           {v.hooks.length > 0 && <ul className="hooks">{v.hooks.map((h) => <li key={h}>{h}</li>)}</ul>}
           {v.editorial && <p className="editorial">{v.editorial}</p>}
           <div className="actions">
-            {published && v.pdf && <a className="btn" href={v.pdf} target="_blank" rel="noopener noreferrer">Lire le magazine (PDF) →</a>}
+            {published && v.pdf && <a className="btn" href="#lecteur">Feuilleter le magazine ↓</a>}
             {!published && <span className="tag">Bientôt disponible</span>}
             <Link className="textlink" href="/volumes">← Tous les volumes</Link>
           </div>
         </div>
       </section>
+
+      {published && v.pdf && (
+        <section className="page reader-sec" id="lecteur" aria-label={`Lecture du volume ${pad(v.number)}`}>
+          <header className="sec-head">
+            <h2>Lire le volume {pad(v.number)}</h2>
+          </header>
+          <MagazineReader url={v.pdf} title={`GLITCH, volume ${pad(v.number)}`} />
+        </section>
+      )}
 
       {v.sections.length > 0 && (
         <section className="page">
@@ -42,7 +52,7 @@ export default async function VolumePage({ params }: { params: Promise<{ slug: s
           <ol className="toc">
             {v.sections.map((s) => (
               <li key={s.title}>
-                <span className="toc-page">{s.page !== undefined ? pad(s.page) : "·"}</span>
+                <span className="toc-page">{s.page === undefined ? "·" : published && v.pdf ? <PageLink page={s.page}>{pad(s.page)}</PageLink> : pad(s.page)}</span>
                 <div>
                   {s.label && <span className="toc-label">{s.label}</span>}
                   <h3>{s.title}</h3>
