@@ -1,0 +1,25 @@
+{
+  "number": 2,
+  "title": "GLITCH",
+  "status": "draft",
+  "releaseDate": "",
+  "hooks": [
+    "Quand la confidence a besoin d'un prétexte",
+    "Qui paie quand on s'ouvre",
+    "Ce que la machine garde"
+  ],
+  "handwritten": "Ta phrase manuscrite ici",
+  "editorial": "",
+  "cover": "",
+  "pdf": "",
+  "sections": [
+    { "page": 6,  "label": "Système", "title": "Le fumoir sans règles", "desc": "Le dehors où la hiérarchie se dissout, et ce qui s'y dit." },
+    { "page": 8,  "label": "Corps", "title": "Qui peut se montrer", "desc": "Celui qui cache, celle qui est exposée malgré elle." },
+    { "page": 10, "label": "Machine", "title": "La confidente", "desc": "Se confier à ce qui enregistre tout." },
+    { "page": 12, "label": "Esprit", "title": "Vertu ou injonction", "desc": "La vulnérabilité, relue sans slogan." },
+    { "page": 14, "label": "Culture", "title": "Exposer, sur-exposer", "desc": "Les œuvres qui font de la mise à nu leur matière." },
+    { "page": 16, "label": "Fun", "title": "Mode sans filtre", "desc": "Quiz, patch notes, courrier des bugs." }
+  ],
+  "playlists": [],
+  "moodboards": []
+}
